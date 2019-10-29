@@ -2,7 +2,7 @@ TEMPLATE = app
 DEPENDPATH += .
 INCLUDEPATH += .
 
-
+CONFIG += c++11
 
 include(../../src/qtpropertybrowser.pri)
 # Input
