@@ -1,6 +1,8 @@
-include(../common.pri)
+#include(../common.pri)
 INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
+
+QT += widgets gui core
 
 qtpropertybrowser-uselib:!qtpropertybrowser-buildlib {
     LIBS += -L$$QTPROPERTYBROWSER_LIBDIR -l$$QTPROPERTYBROWSER_LIBNAME
