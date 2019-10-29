@@ -116,12 +116,19 @@ int main(int argc, char **argv)
     editor1->setFactoryForManager(enumManager, comboBoxFactory);
 
     editor1->addProperty(item0);
-
     QGridLayout* layout = new QGridLayout(mainWidget);
     QPushButton* b = new QPushButton("!", mainWidget);
-    QObject::connect(b, &QPushButton::pressed, []()
+    QObject::connect(b, &QPushButton::pressed, [boolManager, item6]()
     {
         qDebug() << "on Click!!";
+        boolManager->setValue(item6, !boolManager->value(item6));
+        item6->setEnabled(!item6->isEnabled());
+    });
+    QObject::connect(boolManager, &QtBoolPropertyManager::valueChanged, [](QtProperty* p, const QVariant& v)
+    {
+        qDebug() << "p: " << p->valueText();
+        p->setModified(true);
+        qDebug() << "v: " << v.type();
     });
 
     layout->addWidget(editor1, 0, 0);
